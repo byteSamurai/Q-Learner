@@ -1,4 +1,4 @@
-#Q-Learn demo (Tyescript)
+# Q-Learn demo (Typescript)
 
 This is a demonstration of the Q-lern algorithm in Typescript.
 __ONLINE-DEMO:__ [http://q-learn.byte-samurai.de/](http://q-learn.byte-samurai.de/)
@@ -11,7 +11,7 @@ Also its based the [Painless Q-Learning tutorial](http://mnemstudio.org/path-fin
 
 This project was part of a seminar paper. Therefore there are no test available. Feel free to add some ;)
 
-#Installation
+# Installation
 
 1. Download project
 1. Install dependencies
@@ -26,7 +26,9 @@ npm run gulp
 ```
 npm run gulp watch
 ```
-#Credits
+
+
+# Credits
 Project is [MIT](LICENSE.txt)-licensed
 
 Thanks to the images to:
