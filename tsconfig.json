@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "target": "es5",
+    "module": "system",
+    "moduleResolution": "node",
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files":[
+    "typings/jquery/jquery.d.ts"
+  ]
+}

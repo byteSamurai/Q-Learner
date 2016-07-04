@@ -1,0 +1,94 @@
+body
+    background: grey
+    font-family: sans-serif
+
+section.border
+    margin: auto
+    display: table
+    padding-right: 250px
+
+div.row
+    width: 100%
+    height: 60px
+
+div.control
+    background: #a8aaaf
+    float: left
+    position: absolute
+    height: calc(100% - 90px)
+    width: 30%
+    max-width: 250px
+    padding: 70px 20px 20px 20px
+    top: 0
+    right: 0
+    h3
+        padding-bottom: 50px
+
+
+
+ol>li
+    padding-bottom: 30px
+    font-weight: bold
+.symbol
+    font-family: serif
+    font-size: 18pt
+    font-weight: 300
+
+button
+    background: #428BCA
+    color: #fff
+    font-family: sans-serif
+    font-size: 15px
+    line-height: 50px
+    width: 150px
+
+    margin: 5px
+    text-align: center
+    border: 0
+    transition: all 0.3s ease 0s
+
+input[type="number"]
+    margin: 5px
+    font-size: 15px
+    line-height: 30px
+    width: 150px
+
+
+button:hover
+    background: #3071A9
+
+span.cell, i.mouse, label
+    display: inline-block
+    float: left
+    width: 60px
+    height: 100%
+    background: white
+    border: 1px solid darkgray
+    &:hover
+        background-color: #fcff97
+
+    i.mouse
+        border: none
+
+label.cell
+    width: 62px
+    height: 62px
+    background: transparent
+    border: none
+    font-family: sans-serif
+    line-height: 45pt
+    font-size: 30px
+    text-align: center
+    vertical-align: middle
+
+span.block
+    background: url("../img/block.png")
+
+span.target
+    background: white url("../img/cheese.png")
+
+i.mouse
+    background: transparent url("../img/mouse.png")
+
+.phase-2,.phase-3
+    display: none

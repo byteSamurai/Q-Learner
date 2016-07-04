@@ -1,0 +1,29 @@
+{
+  "name": "Q-Learner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@repo.webtaurus.de:2727/zepho/Q-Learner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-if": "^2.0.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^2.13.6",
+    "gulp-util": "^3.0.7",
+    "jquery": "^3.0.0",
+    "systemjs": "^0.19.31",
+    "systemjs-builder": "^0.15.23",
+    "typescript": "^1.8.10"
+  }
+}
