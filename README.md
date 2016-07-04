@@ -1,4 +1,4 @@
-#Q-Learn demo (Tyescript)
+#Q-Learn demo (Typescript)
 
 This is a demonstration of the Q-lern algorithm in Typescript.
 __ONLINE-DEMO:__ [http://q-learn.byte-samurai.de/](http://q-learn.byte-samurai.de/)
@@ -6,7 +6,7 @@ __ONLINE-DEMO:__ [http://q-learn.byte-samurai.de/](http://q-learn.byte-samurai.d
 ![demo](img/demo.png)
 
 It is based on [q-learner.js](https://github.com/nrox/q-learning.js?files=1) which was translated to Typescript.
-Also its based the [Painless Q-Learning tutorial](http://mnemstudio.org/path-finding-q-learning-tutorial.htm)
+Also its based on the [Painless Q-Learning tutorial](http://mnemstudio.org/path-finding-q-learning-tutorial.htm)
 
 
 This project was part of a seminar paper. Therefore there are no test available. Feel free to add some ;)
