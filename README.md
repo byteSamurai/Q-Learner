@@ -15,9 +15,9 @@ This project was part of a seminar paper. Therefore there are no test available.
 
 1. Download project
 1. Install dependencies
-    ```
-    npm install
-    ```
+```
+npm install
+```
 1. Build files
 ```
 npm run gulp
