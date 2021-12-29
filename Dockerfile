@@ -3,7 +3,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 RUN npm install
 COPY . .
-RUN npm run gulp -- --production
+RUN npm run gulp 
 
 FROM nginx:alpine as prod
 COPY --from="build" /usr/src/app/index.html /usr/share/nginx/html/index.html

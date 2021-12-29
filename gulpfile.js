@@ -54,14 +54,13 @@ gulp.task('sass', function (cb) {
 /**
  * Kompiliert Typescript-Dateien
  */
-gulp.task("tsc", function (cb) {
-    gulp.src(typeScriptFiles)
+gulp.task("tsc", function () {
+    return gulp.src(typeScriptFiles)
         .pipe(plumber())
         .pipe(gulpIf(!isProductionMode, sourcemaps.init()))
         .pipe(tsProject())
         .pipe(gulpIf(!isProductionMode, sourcemaps.write(".")))
         .pipe(gulp.dest("./js/"));
-    cb();
 });
 
 
@@ -69,7 +68,6 @@ gulp.task("tsc", function (cb) {
  * Bündelt die App-Dateien
  */
 gulp.task("bundle-app", function (cb) {
-    gulp.emit("tsc");
     var builder = new Builder();
     builder.config({
         defaultJSExtensions: true
@@ -90,7 +88,7 @@ gulp.task("bundle-app", function (cb) {
  * Startet Watcher
  */
 gulp.task("watch", function (cb) {
-    gulp.emit("connect")
+    gulp.series('connect')
     gulp.watch(typeScriptFiles, ["bundle-app"]);
     gulp.watch(browserFiles).on("change", browserSync.reload);
     gulp.watch(sassFiles, ['sass']);
@@ -98,4 +96,4 @@ gulp.task("watch", function (cb) {
 });
 
 
-gulp.task("default", gulp.series('sass', 'bundle-app'));
+gulp.task("default", gulp.series('tsc', 'sass', 'bundle-app'));
