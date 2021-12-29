@@ -1,4 +1,3 @@
-/// <reference path="../typings/jquery/jquery.d.ts" />
 
 import {Field} from "./Field/Field";
 import {QLearner} from "./Q-Learner/QLearner";
@@ -22,7 +21,7 @@ $(()=> {
  */
 var lernphase:any;
 $(document).on("phase-2-started", ()=> {
-    var gamma:number=$("#gamma").val();
+    var gamma:number=parseFloat($("#gamma").val() as string);
     console.log("Phase 2 gestartet mit gamma "+gamma);
     ql = new QLearner(gamma);
     ql=field.setupLearner(ql);

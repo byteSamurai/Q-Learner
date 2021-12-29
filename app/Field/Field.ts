@@ -1,5 +1,3 @@
-/// <reference path="../../typings/jquery/jquery.d.ts" />
-/// <reference path="../../typings/es6-shim/es6-shim.d.ts" />
 
 
 import {State} from "../Q-Learner/State";

@@ -3,26 +3,22 @@
 var gulp = require("gulp"),
     browserSync = require('browser-sync').create(),
     sourcemaps = require("gulp-sourcemaps"),
+    plumber = require("gulp-plumber"),
     typescript = require('typescript'),
     gulpIf = require('gulp-if'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('node-sass')),
     Builder = require('systemjs-builder'),
-    gutil = require('gulp-util'),
     ts = require("gulp-typescript");
 
-var docRootDir = ".",
-    typeScriptFiles = "./app/**/*.ts",
-
-    tsProject = ts.createProject("./tsconfig.json", {
-        typescript: typescript
-    }),
+var typeScriptFiles = "./app/**/*.ts",
+    tsProject = ts.createProject('tsconfig.json'),
     browserFiles = ["./dist/**/*", "./*.html", "./css/**/*"],
     sassFiles = './sass/**/*ss',
     cssFiles = './css',
-    appEntry = 'js/app/main.js',
+    appEntry = 'js/main.js',
     appBundleTarget = 'dist/app.bundle.min.js';
 
-var isProductionMode = gutil.env.production;
+var isProductionMode = process.env.NODE_ENV == "production";
 
 /**
  * Erstellt einen Server furch Browser-Sync
@@ -45,67 +41,61 @@ gulp.task('connect', function () {
 /**
  * Übersetzt Sass
  */
-gulp.task('sass', function () {
-    return gulp.src(sassFiles)
+gulp.task('sass', function (cb) {
+    gulp.src(sassFiles)
         .pipe(sass({
             outputStyle: isProductionMode ? 'compressed' : 'nested'
         }).on('error', sass.logError))
         .pipe(gulp.dest(cssFiles));
+    cb();
 });
 
 
 /**
  * Kompiliert Typescript-Dateien
  */
-gulp.task("tsc", function () {
-    var tsResult = gulp.src(typeScriptFiles, {base: "."})
+gulp.task("tsc", function (cb) {
+    gulp.src(typeScriptFiles)
+        .pipe(plumber())
         .pipe(gulpIf(!isProductionMode, sourcemaps.init()))
-        .pipe(ts(tsProject));
-    return tsResult.js
+        .pipe(tsProject())
         .pipe(gulpIf(!isProductionMode, sourcemaps.write(".")))
-        .pipe(gulp.dest(docRootDir+"/js/"));
+        .pipe(gulp.dest("./js/"));
+    cb();
 });
 
 
 /**
  * Bündelt die App-Dateien
  */
-gulp.task("bundle-app", ["tsc"], function () {
+gulp.task("bundle-app", function (cb) {
+    gulp.emit("tsc");
     var builder = new Builder();
     builder.config({
         defaultJSExtensions: true
     });
     builder
         .buildStatic(appEntry, appBundleTarget, {
-            minify: isProductionMode,
-            sourceMaps: !isProductionMode,
+            // minify: isProductionMode,
+            // sourceMaps: !isProductionMode,
             lowResSourceMaps: true,
             mangle: isProductionMode
         })
-        .then(function () {
-            gutil.log('Build complete');
-        })
-        .catch(function (err) {
-            console.log(err);
-        });
-    return gulp.src(appBundleTarget);
+    // gulp.src(appBundleTarget);
+    cb();
 });
 
 
 /**
  * Startet Watcher
  */
-gulp.task("watch", ["connect"], function () {
+gulp.task("watch", function (cb) {
+    gulp.emit("connect")
     gulp.watch(typeScriptFiles, ["bundle-app"]);
     gulp.watch(browserFiles).on("change", browserSync.reload);
     gulp.watch(sassFiles, ['sass']);
+    cb();
 });
 
 
-gulp.task("default", ['sass', 'bundle-app'], function (callback) {
-    if (!isProductionMode) {
-        console.log("\n -----\n Bitte verwenden Sie `gulp --production` für den produktiven Build\n -----");
-    }
-
-
-});
+gulp.task("default", gulp.series('sass', 'bundle-app'));

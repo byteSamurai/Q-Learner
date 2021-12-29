@@ -14,16 +14,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/jquery": "^3.5.11",
     "browser-sync": "^2.13.0",
-    "gulp": "^3.9.1",
-    "gulp-if": "^2.0.1",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-typescript": "^2.13.6",
-    "gulp-util": "^3.0.7",
-    "jquery": "^3.0.0",
+    "gulp": "^4",
+    "gulp-if": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5",
+    "gulp-sourcemaps": "^3",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "jquery": "^3.6.0",
+    "node-sass": "^7.0.1",
     "systemjs": "^0.19.31",
     "systemjs-builder": "^0.15.23",
-    "typescript": "^1.8.10"
+    "typescript": "^4"
   }
 }

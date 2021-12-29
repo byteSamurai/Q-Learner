@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "noImplicitAny": true,
-    "target": "es5",
+    "target": "es2015",
     "module": "system",
     "moduleResolution": "node",
     "sourceMap": true
@@ -9,7 +9,7 @@
   "exclude": [
     "node_modules"
   ],
-  "files":[
-    "typings/jquery/jquery.d.ts"
-  ]
+  // "files":[
+  //   "typings/jquery/jquery.d.ts"
+  // ]
 }
