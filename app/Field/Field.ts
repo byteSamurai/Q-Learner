@@ -157,7 +157,6 @@ export class Field {
         var allStates:Map<string, number> = new Map<string,number>();
         var maxReward:number = 0;
         var hue:number = 226;
-
         rewards.forEach((actions:Map<Action, number>)=> {
             actions.forEach((reward:number, a:Action)=> {
                 allStates.set(a.nextState.name, reward);
@@ -167,6 +166,9 @@ export class Field {
 
 
         allStates.forEach((reward:number, state:string)=> {
+            if(reward == 0){
+                return;
+            }
             let sat = reward / maxReward * 100;
             let bright = 95 - sat * 0.8;
             this._cells.get(state).css("background-color", "hsl(" + hue + "," + sat + "%," + bright + "%)");

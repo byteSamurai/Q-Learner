@@ -89,9 +89,9 @@ gulp.task("bundle-app", function (cb) {
  */
 gulp.task("watch", function (cb) {
     gulp.series('connect')
-    gulp.watch(typeScriptFiles, ["bundle-app"]);
+    gulp.watch(typeScriptFiles, gulp.series('tsc','bundle-app'));
     gulp.watch(browserFiles).on("change", browserSync.reload);
-    gulp.watch(sassFiles, ['sass']);
+    gulp.watch(sassFiles, gulp.series('sass'));
     cb();
 });
 
